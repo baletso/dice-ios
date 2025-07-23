@@ -54,7 +54,7 @@ class ViewController: UIViewController {
 
         // Subtítulo/instrucción
         let subtitleLabel = UILabel()
-        subtitleLabel.text = "Toca 'Lanzar' para probar tu suerte"
+        subtitleLabel.text = "Toca 'Lanzar' para probar suerte"
         subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         subtitleLabel.textColor = UIColor(white: 1, alpha: 0.7)
         subtitleLabel.textAlignment = .center
@@ -70,6 +70,29 @@ class ViewController: UIViewController {
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
             subtitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             subtitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+        ])
+        
+        // --- ALINEACIÓN Y DISTRIBUCIÓN DE DADOS ---
+        diceImageView1.translatesAutoresizingMaskIntoConstraints = false
+        diceImageView2.translatesAutoresizingMaskIntoConstraints = false
+
+        let diceContainer = UIStackView(arrangedSubviews: [diceImageView1, diceImageView2])
+        diceContainer.axis = .horizontal
+        diceContainer.spacing = 48 // Ajusta según tu preferencia visual
+        diceContainer.alignment = .center
+        diceContainer.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(diceContainer)
+
+        NSLayoutConstraint.activate([
+            // Centra el StackView horizontalmente
+            diceContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            // Ponlo bajo el subtítulo, ajusta el margen según tu UI
+            diceContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            // Fija tamaño de los dados
+            diceImageView1.widthAnchor.constraint(equalToConstant: 120),
+            diceImageView1.heightAnchor.constraint(equalTo: diceImageView1.widthAnchor),
+            diceImageView2.widthAnchor.constraint(equalTo: diceImageView1.widthAnchor),
+            diceImageView2.heightAnchor.constraint(equalTo: diceImageView1.heightAnchor),
         ])
         
         let boldFont = UIFont.boldSystemFont(ofSize: 22)
